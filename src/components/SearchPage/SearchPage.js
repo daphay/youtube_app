@@ -6,7 +6,7 @@ import VideoRow from './../VideoRow/VideoRow';
 import {useParams} from 'react-router';
 import axios from 'axios';
 // import  {DateTime} from 'luxon';
-// import {Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
 
@@ -112,14 +112,16 @@ const SearchPage = (props) =>{
               {
                 videoRows.map(item => {
                   return (
-                            <VideoRow
-                              title={item.title}
-                              image={item.image}
-                              views={item.views}
-                              timestamp={item.timestamp}
-                              channel={item.channel}
-                              description={item.description}
-                            />
+                    <Link key={item.videoId} to={`/video/${item.videoId}`}>
+                      <VideoRow
+                        title={item.title}
+                        image={item.image}
+                        views={item.views}
+                        timestamp={item.timestamp}
+                        channel={item.channel}
+                        description={item.description}
+                      />
+                    </Link>
                   )
                 })
                 
